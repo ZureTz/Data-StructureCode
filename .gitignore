@@ -1,7 +1,9 @@
 # Unix Executables
 *
 !*.*
+!**/*.*
 !*/
+!**/*
 
 #tempRunnerFile
 tempCodeRunnerFile.cc
