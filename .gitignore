@@ -42,6 +42,5 @@ tempCodeRunnerFile.cc
 *.lib
 
 # Executables
-*.exe
 *.out
 *.app
