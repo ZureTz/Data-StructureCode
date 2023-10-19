@@ -1,4 +1,4 @@
-# Unix Executables
+# Executables
 *
 !*.*
 !*/
@@ -42,5 +42,6 @@ tempCodeRunnerFile.cc
 *.lib
 
 # Executables
+*.exe
 *.out
 *.app
