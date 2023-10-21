@@ -16,18 +16,18 @@ struct Company {
       : index(index), priority(priority) {}
 };
 
+struct companyCmp {
+  bool operator()(const Company &c1, const Company &c2) const {
+    return std::tie(c1.priority, c1.index) < std::tie(c2.priority, c2.index);
+  }
+};
+
 struct Task {
   ll time;
   ll taskIndex;
   Task(ll time = 0, ll index = 0) : time(time), taskIndex(index) {}
   bool operator==(const Task &rhs) const {
     return time == rhs.time && taskIndex == rhs.taskIndex;
-  }
-};
-
-struct companyCmp {
-  bool operator()(const Company &c1, const Company &c2) const {
-    return std::tie(c1.priority, c1.index) < std::tie(c2.priority, c2.index);
   }
 };
 
