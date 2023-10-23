@@ -1,9 +1,15 @@
 #include <cstddef>
 #include <deque>
+#include <functional>
 #include <iostream>
 #include <string>
+#include <unordered_set>
 using std::cin;
 using std::cout;
+
+inline size_t hash(const std::string &s1, const std::string &s2) {
+  return std::hash<std::string>()(s1) ^ (std::hash<std::string>()(s2) << 1);
+}
 
 int main(int argc, char const *argv[]) {
   std::ios::sync_with_stdio(false);
@@ -13,8 +19,16 @@ int main(int argc, char const *argv[]) {
 
   std::string stack;
   bool flag = true;
+  std::unordered_set<size_t> duplicateSet;
 
   while (!alpha.empty() && !beta.empty()) {
+    // cout << alpha << ' ' << beta << ' ' << stack << std::endl;
+    const size_t hashNum = hash(alpha, beta);
+    if (duplicateSet.find(hashNum) != duplicateSet.end()) {
+      cout << "-1" << std::endl;
+      return 0;
+    }
+
     if (flag) {
       char temp = alpha.front();
       alpha.erase(0, 1);
@@ -44,13 +58,13 @@ int main(int argc, char const *argv[]) {
       stack.erase(stack.begin(), stack.begin() + find + 1);
       continue;
     }
-    
+
     stack.insert(0, 1, temp);
     flag = !flag;
     continue;
   }
 
-  cout << std::string(stack.rbegin(), stack.rend());
-
+  // cout<<alpha<<' '<<beta<<std::endl;
+  cout << (alpha.empty() ? beta : alpha) << std::endl;
   return 0;
 }
