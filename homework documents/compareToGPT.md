@@ -390,11 +390,11 @@ int main(int argc, char const *argv[]) {
   while (!alpha.empty() && !beta.empty()) {
     // cout << alpha << ' ' << beta << ' ' << stack << std::endl;
     const size_t hashNum = hash(alpha, beta);
-    // cycle detected, means the execution is infinite
     if (duplicateSet.find(hashNum) != duplicateSet.end()) {
       cout << "-1" << std::endl;
       return 0;
     }
+    duplicateSet.insert(hashNum);
 
     if (flag) {
       char temp = alpha.front();

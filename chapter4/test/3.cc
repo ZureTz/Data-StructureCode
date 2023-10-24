@@ -28,6 +28,7 @@ int main(int argc, char const *argv[]) {
       cout << "-1" << std::endl;
       return 0;
     }
+    duplicateSet.insert(hashNum);
 
     if (flag) {
       char temp = alpha.front();
