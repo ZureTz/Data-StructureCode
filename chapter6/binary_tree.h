@@ -1,10 +1,12 @@
-#include <_types/_uint32_t.h>
+#include <__type_traits/is_swappable.h>
 #include <functional>
 #include <initializer_list>
 #include <iostream>
+#include <ostream>
 #include <queue>
 #include <stack>
 #include <utility>
+using std::cin;
 using std::cout;
 
 template <typename T> struct TreeNode {
@@ -86,6 +88,19 @@ template <typename T> void postOrderTraversal(TreeNode<T> *const node) {
   cout << node->data << ' ';
 };
 
+template <typename T> void reverseTree(TreeNode<T> *node) {
+  if (node == nullptr) {
+    return;
+  }
+  if (node->left) {
+    reverseTree(node->left);
+  }
+  if (node->right) {
+    reverseTree(node->right);
+  }
+  std::swap(node->left, node->right);
+}
+
 } // namespace recursive
 
 namespace iterative {
@@ -157,44 +172,3 @@ template <typename T> void layerOrderTraversal(TreeNode<T> *const root) {
 }
 
 } // namespace iterative
-
-int main(int argc, char const *argv[]) {
-  /*
-                2
-               / \
-              /   \
-             /     \
-            /       \
-           3         5
-          / \       / \
-         /   \     /   \
-        7    11   13   15
-       / \  / \
-      24 4 5  6
-  */
-  BinaryTree<int> tree{
-      2, 3, 5, 7, 11, 13, 15, 24, 4, 5, 6,
-  };
-  recursive::preOrderTraversal(tree.root);
-  cout.put('\n');
-  recursive::inOrderTraversal(tree.root);
-  cout.put('\n');
-  recursive::postOrderTraversal(tree.root);
-  cout.put('\n');
-
-  iterative::preOrderTraversal(tree.root);
-  cout.put('\n');
-  iterative::inOrderTraversal(tree.root);
-  cout.put('\n');
-  iterative::postOrderTraversal(tree.root);
-  cout.put('\n');
-  iterative::layerOrderTraversal(tree.root);
-  cout.put('\n');
-
-  // TreeNode<int> *ptr = tree.root;
-  // while (ptr) {
-  //   cout << ptr->data << ' ';
-  //   ptr = ptr->left;
-  // }
-  return 0;
-}
