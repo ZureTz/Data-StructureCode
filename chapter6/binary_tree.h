@@ -64,6 +64,17 @@ template <typename T> void preOrderTraversal(TreeNode<T> *const node) {
   }
 };
 
+template <typename T> void preOrderTraversalVer2(TreeNode<T> *const node) {
+  if (node == nullptr) {
+    return;
+  }
+  cout << node->data << ' ';
+  // cout << "go left" << std::endl;
+  preOrderTraversal(node->left);
+  // cout << "go right" << std::endl;
+  preOrderTraversal(node->right);
+};
+
 template <typename T> void inOrderTraversal(TreeNode<T> *const node) {
   if (node->left) {
     // cout << "go left" << std::endl;
