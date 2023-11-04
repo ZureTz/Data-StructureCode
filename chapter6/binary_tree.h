@@ -6,7 +6,6 @@
 #include <queue>
 #include <stack>
 #include <utility>
-using std::cin;
 using std::cout;
 
 template <typename T> struct TreeNode {
