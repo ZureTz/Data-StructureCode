@@ -1,4 +1,4 @@
-#include "solver"
+#include "solver.h"
 #include <cstring>
 #include <iostream>
 
