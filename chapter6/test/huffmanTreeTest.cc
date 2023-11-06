@@ -1,61 +1,57 @@
-#include "huffman_tree.h"
-#include <iomanip>
 #include <iostream>
-#include <optional>
-#include <utility>
-#include <vector>
+#include "huffman_tree.h"
 using std::cout;
 
-size_t getHeight(HuffmanNode *root) {
-  if (root == nullptr) {
-    return 0;
-  }
-  return 1 + std::max(getHeight(root->left), getHeight(root->right));
-}
+// size_t getHeight(HuffmanNode *root) {
+//   if (root == nullptr) {
+//     return 0;
+//   }
+//   return 1 + std::max(getHeight(root->left), getHeight(root->right));
+// }
 
-std::deque<std::deque<std::pair<char, int>>>
-treeTable(HuffmanNode *root, const size_t height,
-          const size_t currentIndex = 0) {
-  if (root == nullptr) {
-    return std::deque<std::deque<std::pair<char, int>>>();
-  }
+// std::deque<std::deque<std::pair<char, int>>>
+// treeTable(HuffmanNode *root, const size_t height,
+//           const size_t currentIndex = 0) {
+//   if (root == nullptr) {
+//     return std::deque<std::deque<std::pair<char, int>>>();
+//   }
 
-  std::deque<std::deque<std::pair<char, int>>> leftResult =
-      treeTable(root->left, height, currentIndex + 1);
+//   std::deque<std::deque<std::pair<char, int>>> leftResult =
+//       treeTable(root->left, height, currentIndex + 1);
 
-  std::deque<std::deque<std::pair<char, int>>> result(
-      1, std::deque<std::pair<char, int>>(height, {'\0', 0}));
-  result[0][currentIndex].first =
-      (root->element.has_value() ? root->element.value() : '#');
-  result[0][currentIndex].second = root->frequencyCount;
+//   std::deque<std::deque<std::pair<char, int>>> result(
+//       1, std::deque<std::pair<char, int>>(height, {'\0', 0}));
+//   result[0][currentIndex].first =
+//       (root->element.has_value() ? root->element.value() : '#');
+//   result[0][currentIndex].second = root->frequencyCount;
 
-  std::deque<std::deque<std::pair<char, int>>> rightResult =
-      treeTable(root->right, height, currentIndex + 1);
+//   std::deque<std::deque<std::pair<char, int>>> rightResult =
+//       treeTable(root->right, height, currentIndex + 1);
 
-  result.insert(result.begin(), rightResult.begin(), rightResult.end());
-  result.insert(result.end(), leftResult.begin(), leftResult.end());
+//   result.insert(result.begin(), rightResult.begin(), rightResult.end());
+//   result.insert(result.end(), leftResult.begin(), leftResult.end());
 
-  return result;
-}
+//   return result;
+// }
 
-void printTreeAsTable(HuffmanNode *root) {
-  if (root == nullptr) {
-    return;
-  }
-  const size_t height = getHeight(root);
-  const auto result = treeTable(root, height);
-  for (const auto row : result) {
-    for (const auto data : row) {
-      if (data.first == '\0') {
-        cout << "      ";
-        continue;
-      }
-      cout << data.first << ',' << std::setw(3) << std::setfill(' ')
-           << data.second << ' ';
-    }
-    cout << std::endl;
-  }
-}
+// void printTreeAsTable(HuffmanNode *root) {
+//   if (root == nullptr) {
+//     return;
+//   }
+//   const size_t height = getHeight(root);
+//   const auto result = treeTable(root, height);
+//   for (const auto row : result) {
+//     for (const auto data : row) {
+//       if (data.first == '\0') {
+//         cout << "      ";
+//         continue;
+//       }
+//       cout << data.first << ',' << std::setw(3) << std::setfill(' ')
+//            << data.second << ' ';
+//     }
+//     cout << std::endl;
+//   }
+// }
 
 int main(int argc, char const *argv[]) {
   cout << "--------------------------------------------------------------------"

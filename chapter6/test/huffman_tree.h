@@ -54,7 +54,7 @@ struct HuffmanTree {
       queue.pop();
       const NodePtr node2 = queue.top();
       queue.pop();
-      NodePtr newNode =
+      const NodePtr newNode =
           new HuffmanNode(node1->frequencyCount + node2->frequencyCount);
       newNode->left = node1, newNode->right = node2;
       node1->parent = node2->parent = newNode;
@@ -162,15 +162,9 @@ private:
       return;
     }
 
-    // Non-exit: expand string and pass to the next:
-    if (node->left == nullptr) {
-      throw "Left Child Not Found";
-    }
+    // Non-exit: pass the expanded string as an argument to the next recursive
+    // call:
     implementTreeInMap(node->left, std::move(pathString + "0"));
-
-    if (node->right == nullptr) {
-      throw "Right Child Not Found";
-    }
     implementTreeInMap(node->right, std::move(pathString + "1"));
   }
 
