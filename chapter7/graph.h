@@ -17,7 +17,7 @@ struct Graph {
     matrix.resize(n);
     std::fill(matrix.begin(), matrix.end(), std::vector<int>(n, 0));
   }
-  void edgeConnect(const int begin, const int end, const int length) {
+  void edgeConnect(const int begin, const int end, const int length= 1) {
     matrix[begin][end] = length;
   }
 };
