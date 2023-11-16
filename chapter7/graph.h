@@ -3,6 +3,7 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 
+#include <initializer_list>
 #include <algorithm>
 #include <functional>
 #include <ostream>
@@ -47,6 +48,11 @@ struct Graph {
   std::vector<VertexNode *> list;
 
   Graph() {}
+  Graph(const std::initializer_list<int> &source) {
+    for (const int data : source) {
+      vertexPush(data);
+    }
+  }
 
   void vertexPush(const int data) { list.push_back(new VertexNode(data)); }
   void edgeConnect(const int begin, const int end, const int edgeLength = 1) {

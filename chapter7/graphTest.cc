@@ -5,10 +5,8 @@ using std::cout;
 int main(int argc, char const *argv[]) {
   std::ios::sync_with_stdio(false);
 
-  AdjacentList::Graph graph;
-  for (int i = 0; i < 5; ++i) {
-    graph.vertexPush(i);
-  }
+  AdjacentList::Graph graph{0, 1, 2, 3, 4};
+
   graph.edgeConnect(0, 1);
   graph.edgeConnect(1, 2);
   graph.edgeConnect(2, 0);
@@ -26,7 +24,6 @@ int main(int argc, char const *argv[]) {
   // graph.edgeConnect(2, 4);
   // graph.edgeConnect(4, 5);
   // graph.edgeConnect(5, 2);
-
 
   graph.DFS(cout, 0);
   cout.put('\n');
