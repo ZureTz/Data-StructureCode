@@ -3,7 +3,6 @@
 #include <iomanip>
 #include <iostream>
 #include <vector>
-using std::cin;
 using std::cout;
 
 template <typename T> inline bool less(const T &a, const T &b) { return a < b; }
@@ -34,13 +33,7 @@ void qsort(iterator begin, iterator end, compare cmp) {
       }
       std::swap(*left, *right);
     }
-    // cout << middle - begin << ' ' << *middle << ' ' << std::endl;
-    // for (auto it = begin; it != end; ++it) {
-    //   cout << std::setw(3) << std::setfill(' ') << *it;
-    // }
-    // cout << std::endl;
   }
-  // cout << std::endl;
 
   qsort(begin, right + 1, cmp);
   qsort(right + 1, end, cmp);

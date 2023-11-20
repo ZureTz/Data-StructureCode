@@ -41,16 +41,16 @@ const std::vector<std::pair<int, int>> directions = {
 };
 } // namespace
 
-int minimumCost(
+long long minimumCost(
     // const arguments
-    const std::unordered_map<std::pair<int, int>, int, pairHash> &customers,
+    const std::unordered_map<std::pair<int, int>, long long, pairHash> &customers,
     const std::unordered_set<std::pair<int, int>, pairHash> &blockedPoints,
     const int mapSize,
     // non-const arguments
     std::unordered_set<std::pair<int, int>, pairHash> &visitedPos,
     std::queue<Node> &Queue) {
 
-  int result = 0;
+  long long result = 0ll;
   while (!Queue.empty()) {
     Node currentNode = Queue.front();
     Queue.pop();
@@ -91,11 +91,12 @@ int main(int argc, char const *argv[]) {
     visitedPos.insert({x - 1, y - 1});
   }
 
-  std::unordered_map<std::pair<int, int>, int, pairHash> customers;
+  std::unordered_map<std::pair<int, int>, long long, pairHash> customers;
   for (int i = 0; i < kCustomers; ++i) {
-    int x, y, serves;
+    int x, y;
+    long long serves;
     cin >> x >> y >> serves;
-    customers[{x - 1, y - 1}] = serves;
+    customers[{x - 1, y - 1}] += serves;
   }
 
   std::unordered_set<std::pair<int, int>, pairHash> blockedPoints;
@@ -105,7 +106,8 @@ int main(int argc, char const *argv[]) {
     blockedPoints.insert({blockedX - 1, blockedY - 1});
   }
 
-  const int cost = minimumCost(customers, blockedPoints, nMapSize, visitedPos, Queue);
+  const long long cost =
+      minimumCost(customers, blockedPoints, nMapSize, visitedPos, Queue);
   cout << cost << std::endl;
 
   return 0;

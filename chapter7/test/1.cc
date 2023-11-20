@@ -2,14 +2,13 @@
 #include <deque>
 #include <iostream>
 #include <vector>
-using std::cin;
 using std::cout;
 
 void dfs(const AdjacentList::Graph &graph, std::vector<bool> &isVisited,
          std::deque<int> &dest, int node) {
   if (isVisited[node]) {
     return;
-  }
+  } 
   isVisited[node] = true;
   AdjacentList::EdgeNode *edge = graph.list[node]->firstEdge;
   while (edge) {
