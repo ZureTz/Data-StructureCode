@@ -3,9 +3,9 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 
-#include <initializer_list>
 #include <algorithm>
 #include <functional>
+#include <initializer_list>
 #include <ostream>
 #include <queue>
 #include <unordered_set>
@@ -18,7 +18,7 @@ struct Graph {
     matrix.resize(n);
     std::fill(matrix.begin(), matrix.end(), std::vector<int>(n, 0));
   }
-  void edgeConnect(const int begin, const int end, const int length= 1) {
+  void edgeConnect(const int begin, const int end, const int length = 1) {
     matrix[begin][end] = length;
   }
 };
@@ -131,4 +131,23 @@ struct Graph {
 
 } // namespace AdjacentList
 
+namespace book {
+constexpr int MaxVertexNum = 100;
+struct ArcNode {
+  int adjvex;
+  ArcNode *next;
+};
+
+struct VNode {
+  int data;
+  ArcNode *first;
+};
+
+struct ALGraph {
+  using AdjList = VNode[MaxVertexNum];
+  AdjList vertices;
+  int vexnum, arcnum;
+};
+
+} // namespace book
 #endif
