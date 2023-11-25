@@ -31,7 +31,6 @@ template <typename T> struct BinaryTree {
     std::queue<NodePtr> insertQueue;
     insertQueue.push(root);
 
-    bool insertFlag = true;
     auto it = list.begin() + 1;
     while (it != list.end()) {
       NodePtr tempPtr = insertQueue.front();

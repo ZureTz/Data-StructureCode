@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 using std::cout;
+
 template <typename T>
 std::ostream &operator<<(std::ostream &os, const std::vector<T> &array) {
   for (const int num : array) {
