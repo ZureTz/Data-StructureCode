@@ -136,11 +136,13 @@ constexpr int MaxVertexNum = 100;
 struct ArcNode {
   int adjvex;
   ArcNode *next;
+  ArcNode(int adjVex) : adjvex(adjVex), next() {}
 };
 
 struct VNode {
   int data;
   ArcNode *first;
+  VNode(int data = 0) : data(data), first() {}
 };
 
 struct ALGraph {
