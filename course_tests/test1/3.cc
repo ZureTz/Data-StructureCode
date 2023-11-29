@@ -1,3 +1,4 @@
+#include <_ctype.h>
 #include <iostream>
 #include <list>
 #include <sstream>
@@ -119,6 +120,9 @@ int main(int argc, char const *argv[]) {
   while (std::cin.good() && std::cin.peek() != '\n') {
     char element;
     std::cin >> element;
+    if (isdigit(element)) {
+      continue;
+    }
     s1.insert(element);
   }
   std::cin.ignore();

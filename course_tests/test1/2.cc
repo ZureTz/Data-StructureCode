@@ -74,7 +74,8 @@ Digit *mergeNumAdd(Digit *const head1, Digit *const head2) {
   result->next->prev = tmp;
   result->next = tmp;
 
-  while (result->next->num == 0) {
+  while (result->next->next != result&&result->next->num == 0) {
+    result->next->prev = result;
     result->next = result->next->next;
   }
   return result;
@@ -116,7 +117,8 @@ Digit *mergeNumSub(Digit *const head1, Digit *const head2) {
     p1 = p1->prev;
   }
 
-  while (result->next->num == 0) {
+  while (result->next->next != result && result->next->num == 0) {
+    result->next->prev = result;
     result->next = result->next->next;
   }
   return result;
@@ -139,7 +141,7 @@ void output(Digit *const head) {
     }
   }
 
-  if (head->num < 0) {
+  if (head->next->num && head->num < 0) {
     temp.insert(0, 1, '-');
   }
 

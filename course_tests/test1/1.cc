@@ -1,5 +1,4 @@
-#include <algorithm>
-#include <ios>
+#include <cctype>
 #include <iostream>
 #include <limits>
 #include <list>
@@ -59,9 +58,23 @@ int main(int argc, char const *argv[]) {
   std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
   std::list<Node> list1;
+  std::string t2;
+  std::getline(cin, t2);
+  std::stringstream ss2(t2);
   for (int i = 0; i < list1Length; ++i) {
     int coef, exp;
-    (std::cin >> coef >> exp).get();
+    while (!isdigit(ss2.peek()) && !(ss2.peek() == '-')) {
+      ss2.get();
+    }
+    ss2 >> coef;
+
+    while (!isdigit(ss2.peek()) && !(ss2.peek() == '-')) {
+      ss2.get();
+    }
+    ss2 >> exp;
+    if (coef == 0) {
+      continue;
+    }
     list1.push_back(Node(coef, exp));
   }
 
@@ -71,9 +84,23 @@ int main(int argc, char const *argv[]) {
   // cout << "\b \n";
 
   std::list<Node> list2;
+  std::string t1;
+  std::getline(cin, t1);
+  std::stringstream ss1(t1);
   for (int i = 0; i < list2Length; ++i) {
     int coef, exp;
-    (std::cin >> coef >> exp).get();
+    while (!isdigit(ss1.peek()) && !(ss1.peek() == '-')) {
+      ss1.get();
+    }
+    ss1 >> coef;
+
+    while (!isdigit(ss1.peek()) && !(ss1.peek() == '-')) {
+      ss1.get();
+    }
+    ss1 >> exp;
+    if (coef == 0) {
+      continue;
+    }
     list2.push_back(Node(coef, exp));
   }
 
@@ -89,10 +116,26 @@ int main(int argc, char const *argv[]) {
   list2.sort(NodeComp);
 
   auto res = mergeList(list1, list2);
-  for (const auto &node : res) {
-    cout << node.coef << ' ' << node.exp << ',';
+  if (res.empty()) {
+    cout << "0 0";
+    return 0;
   }
-  cout << "\b \n";
+  // for (const auto &node : res) {
+  //   cout << node.coef;
+  //   if (node.exp) {
+  //     cout << ' ' << node.exp;
+  //   }
+  //   cout << ',';
+  // }
+  // cout << "\b ";
+  auto it = res.begin();
+  cout << it->coef << ' ' << it->exp;
+  ++it;
+  while (it != res.end()) {
+    cout << ',' << it->coef << ' ' << it->exp;
+    ++it;
+  }
+  cout << std::endl;
 
   return 0;
 }
