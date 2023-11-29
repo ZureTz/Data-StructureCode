@@ -1,14 +1,13 @@
 #include "graph.h"
-#include <cstdio>
-#include <cstdlib>
+#include <iostream>
 
 void FindPath(book::ALGraph *G, int stack[], int &stackSize, int dest,
               int &isexist) {
   if (stack[stackSize - 1] == dest) { // full path to dest found, put result
     for (int i = 0; i < stackSize; ++i) {
-      printf("%d ", stack[i]);
+      std::cout << stack[i] << ' ';
     }
-    putchar('\n');
+    std::cout.put('\n');
     isexist = true;
     return;
   }
@@ -32,11 +31,11 @@ void FindPath(book::ALGraph *G, int stack[], int &stackSize, int dest,
 }
 
 inline void ExistPath(book::ALGraph *G, int u, int v, int &exist) {
-  int *stack = (int *)malloc(sizeof(int) * G->vexnum);
+  int *stack = new int[G->vexnum]();
   int stackSize = 1;
   stack[stackSize - 1] = u;
   FindPath(G, stack, stackSize, v, exist);
-  free(stack);
+  delete [] stack;
 }
 
 int main(int argc, char const *argv[]) {
@@ -58,7 +57,7 @@ int main(int argc, char const *argv[]) {
 
   int exist = 0;
   ExistPath(&G, 0, 4, exist);
-  printf("%d\n", exist);
+  std::cout << (exist ? "Exist" : "Not Exist") << '\n';
 
   return 0;
 }

@@ -142,7 +142,7 @@ struct ArcNode {
 struct VNode {
   int data;
   ArcNode *first;
-  VNode(int data = 0) : data(data), first() {}
+  VNode(int data = 0) : data(data), first(nullptr) {}
 };
 
 struct ALGraph {

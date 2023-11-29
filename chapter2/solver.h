@@ -110,7 +110,7 @@ template <typename T> T Solver::decoder(const std::string &exp) {
     // operators:
     if (Priority.find(opTemp) == Priority.end()) {
 #ifdef DEBUG
-// cout << "error: " << opTemp << std::endl;
+      cout << "error: " << opTemp << std::endl;
 #endif
       std::cerr << "Error: Undefined Symbol: " << '\"' << opTemp << '\"'
                 << std::endl;
