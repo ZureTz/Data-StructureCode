@@ -1,11 +1,11 @@
 #include <iostream>
 #include <list>
+#include <sstream>
 using std::cout;
 
 namespace my {
 template <typename T> class set {
 public:
-
   std::list<T> list;
 
   set() {}
@@ -31,8 +31,7 @@ public:
   }
 };
 
-template <typename T>
-set<T> AND(const set<T> &lhs, const set<T> &rhs) {
+template <typename T> set<T> AND(const set<T> &lhs, const set<T> &rhs) {
   my::set<T> result;
   auto it1 = lhs.list.begin(), it2 = rhs.list.begin();
   while (it1 != lhs.list.end() && it2 != rhs.list.end()) {
@@ -53,8 +52,7 @@ set<T> AND(const set<T> &lhs, const set<T> &rhs) {
   return result;
 }
 
-template<typename T>
-set<T> OR(const set<T> &lhs, const set<T> &rhs) {
+template <typename T> set<T> OR(const set<T> &lhs, const set<T> &rhs) {
   my::set<T> result;
   auto it1 = lhs.list.begin(), it2 = rhs.list.begin();
   while (it1 != lhs.list.end() && it2 != rhs.list.end()) {
@@ -87,8 +85,7 @@ set<T> OR(const set<T> &lhs, const set<T> &rhs) {
   return result;
 }
 
-template<typename T>
-set<T> DIFF(const set<T> &lhs, const set<T> &rhs) {
+template <typename T> set<T> DIFF(const set<T> &lhs, const set<T> &rhs) {
   my::set<T> result;
   auto it1 = lhs.list.begin(), it2 = rhs.list.begin();
 
@@ -117,13 +114,7 @@ set<T> DIFF(const set<T> &lhs, const set<T> &rhs) {
 
 } // namespace my
 
-
-
-template class my::set<char>;
-template my::set<char> my::AND(const my::set<char> &lhs, const my::set<char> &rhs);
-
 int main(int argc, char const *argv[]) {
-
   my::set<char> s1;
   while (std::cin.good() && std::cin.peek() != '\n') {
     char element;
@@ -146,7 +137,6 @@ int main(int argc, char const *argv[]) {
   ANDRes.output();
   my::set<char> DIFFRes = my::DIFF(s1, s2);
   DIFFRes.output();
-
 
   return 0;
 }

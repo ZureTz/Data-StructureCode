@@ -16,17 +16,7 @@ struct Person {
 void outputSeq(Person *head, int password) {
   auto ptr = head->next;
   while (head->next != head) {
-    // cout << "Iterations : " << password << '\n';
-    // {
-    //   auto Tptr = head->next;
-    //   while (Tptr != head) {
-    //     cout << Tptr->number << ' ';
-    //     Tptr = Tptr->next;
-    //   }
-    //   cout << '\n';
-    // }
     while (--password > 0) {
-      // cout << ptr->number;
       ptr = ptr->next;
       if (ptr == head) {
         ptr = ptr->next;
@@ -63,21 +53,6 @@ int main(int argc, char const *argv[]) {
       ptr->next = tmp;
     }
   }
-  // {
-  //   auto ptr = firstHead->next;
-  //   while (ptr != firstHead) {
-  //     cout << ptr->number << ',' << ptr->password << '\n';
-  //     ptr = ptr->next;
-  //   }
-  //   cout << '\n';
-
-  //   ptr = firstHead->prev;
-  //   while (ptr != firstHead) {
-  //     cout << ptr->number << ',' << ptr->password << '\n';
-  //     ptr = ptr->prev;
-  //   }
-  //   cout << '\n';
-  // }
 
   outputSeq(firstHead, password);
 

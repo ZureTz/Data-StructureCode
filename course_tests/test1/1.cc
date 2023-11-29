@@ -3,6 +3,8 @@
 #include <iostream>
 #include <limits>
 #include <list>
+#include <sstream>
+#include <string>
 using std::cin;
 using std::cout;
 
@@ -52,26 +54,33 @@ std::list<Node> mergeList(const std::list<Node> &l1,
 }
 
 int main(int argc, char const *argv[]) {
-
   int list1Length, list2Length;
-  cin >> list1Length >> list2Length;
-  cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+  std::cin >> list1Length >> list2Length;
+  std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
   std::list<Node> list1;
   for (int i = 0; i < list1Length; ++i) {
     int coef, exp;
-    char eater;
-    cin >> coef >> exp >> eater;
+    (std::cin >> coef >> exp).get();
     list1.push_back(Node(coef, exp));
   }
+
+  // for (const auto &node : list1) {
+  //   cout << node.coef << ' ' << node.exp << ',';
+  // }
+  // cout << "\b \n";
 
   std::list<Node> list2;
   for (int i = 0; i < list2Length; ++i) {
     int coef, exp;
-    char eater;
-    cin >> coef >> exp >> eater;
+    (std::cin >> coef >> exp).get();
     list2.push_back(Node(coef, exp));
   }
+
+  // for (const auto &node : list2) {
+  //   cout << node.coef << ' ' << node.exp << ',';
+  // }
+  // cout << "\b \n";
 
   auto NodeComp = [](const Node &n1, const Node &n2) {
     return n1.exp > n2.exp;
