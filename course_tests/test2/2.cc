@@ -10,7 +10,7 @@ using std::cout;
 struct pairHash {
   std::size_t operator()(const std::pair<int, int> &pair) const {
     return std::hash<int>()(pair.first) ^ (std::hash<int>()(pair.second) << 1);
-  };
+  }
 };
 
 std::unordered_map<std::pair<int, int>, unsigned long long, pairHash> DPMap;
