@@ -127,7 +127,7 @@ int main(int argc, char const *argv[]) {
   std::string str;
   std::getline(std::cin, str);
 
-  cout << std::fixed << std::setprecision(2) << Solver::decoder<double>(str);
+  cout << std::fixed << std::setprecision(2) << Solver::decoder<double>(str) << std::endl;
 
   return 0;
 }

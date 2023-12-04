@@ -1,7 +1,7 @@
-#include <_ctype.h>
+#include <cctype>
 #include <iostream>
 #include <list>
-#include <sstream>
+
 using std::cout;
 
 namespace my {
