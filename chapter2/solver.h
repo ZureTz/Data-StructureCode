@@ -3,7 +3,7 @@
 #ifndef __SOLVER_H
 #define __SOLVER_H
 
-#include <_ctype.h>
+#include <cctype>
 #include <cstdlib>
 #include <iostream>
 #include <sstream>

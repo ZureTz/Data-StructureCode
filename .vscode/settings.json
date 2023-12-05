@@ -1,4 +1,5 @@
 {
   "cmake.configureOnOpen": false,
-  "cmake.sourceDirectory": "/Users/trozure/Documents/Works/Data Structure/QtExample"
+  "cmake.sourceDirectory": "/Users/trozure/Documents/Works/Data Structure/QtExample",
+  "terminal.integrated.fontFamily": ""
 }
