@@ -1,4 +1,3 @@
-#include <__type_traits/is_swappable.h>
 #include <functional>
 #include <initializer_list>
 #include <iostream>

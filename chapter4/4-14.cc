@@ -1,5 +1,4 @@
-#include <_ctype.h>
-#include <cstdlib>
+#include <cctype>
 #include <iostream>
 #include <stack>
 #include <string>
@@ -21,7 +20,7 @@ inline bool isOperator(const char ch) {
 std::string reverseExp(const std::string &src) {
   std::stack<std::string> stack;
   for (auto it = src.end() - 1; it >= src.begin(); --it) {
-    if (isdigit(*it)||isalpha(*it)) {
+    if (isdigit(*it) || isalpha(*it)) {
       stack.push(std::string(1, *it));
       continue;
     }
@@ -39,7 +38,6 @@ std::string reverseExp(const std::string &src) {
 }
 
 int main(int argc, char const *argv[]) {
-  std::ios::sync_with_stdio(false);
-  std::cout << reverseExp("*-A/BC-/AKL");
+  std::cout << reverseExp("*-A/BC-/AKL") << '\n';
   return 0;
 }

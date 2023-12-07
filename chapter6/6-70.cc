@@ -1,9 +1,8 @@
-#include <_ctype.h>
+#include <cctype>
 #include <cstddef>
 #include <iostream>
 #include <sstream>
 #include <string>
-#include <sys/_types/_size_t.h>
 #include <vector>
 using std::cout;
 

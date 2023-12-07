@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <cstddef>
 #include <iostream>
+#include <limits>
 #include <ostream>
 #include <string>
 #include <utility>
@@ -50,7 +51,7 @@ vector<string> LCSubStrs(const string &x, const string &y,
 
   std::cout << max << std::endl;
   vector<string> result;
-  pair<size_t, size_t> iMinPos = {SIZE_T_MAX, 0};
+  pair<size_t, size_t> iMinPos = {std::numeric_limits<size_t>::max(), 0};
   for (size_t i = 1; i < m + 1; ++i) {
     for (size_t j = 1; j < n + 1; ++j) {
       if (dp[i][j] == max) {
